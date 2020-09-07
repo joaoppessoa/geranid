@@ -1,0 +1,46 @@
+.sidebar {
+    z-index: 1;
+    background: #2F323A;
+    position: fixed;
+    top: 70px;
+    width: 250px;
+    height: calc(100% - 9%);
+    transition: 0.3s;
+    transition-property: width;
+    overflow-y: auto; 
+}
+
+.sidebar .sidebar-menu {
+    overflow: hidden;
+}
+
+.sidebar .sidebar-menu .profile img {
+    margin: 20px 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.sidebar .sidebar-menu .profile p {
+    color: #bbb;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.sidebar .sidebar-menu .item {
+    width: 250px;
+    overflow: hidden;
+}
+
+.sidebar .sidebar-menu .item .menu-btn {
+    display: block;
+    color: #fff;
+    position: relative;
+    padding: 25px 20px;
+    transition: 0.3s;
+    transition-property: color;
+}
+
+.sidebar .sidebar-menu .item .menu-btn:hover {
+    color: #4CCEE8;
+}
