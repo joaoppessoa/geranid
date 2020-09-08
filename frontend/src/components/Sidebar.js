@@ -1,6 +1,6 @@
 import React from 'react';
 import imgprof from '../assets/imagem.png';
-import '../css/styleSidebar.css';
+import '../css/cssComponets/styleSidebar.css';
 
 class Sidebar extends React.Component {
     constructor(props) {

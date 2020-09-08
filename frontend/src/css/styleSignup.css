@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.body-log-up {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    height: 100%;
+    padding-top: 80px;
+}
+
+.signup-form {
+    z-index: 1;
+    font-family: "Poppins", sans-serif;
+    position: absolute;
+    width: 320px;
+    text-align: center;
+}
+
+.signup-form .title {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.signup-form .title span { 
+    color: #4CCEE8;
+}
+
+.signup-form i {
+    z-index: 1;
+    color: #ccc;
+    font-size: 65px;
+    margin-bottom: 30px;
+}
+
+.signup-form .user-input {
+    width: 320px;
+    height: 55px;
+    margin-bottom: 30px;
+    outline: none;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 5px;
+    transition: 0.5s;
+    transition-property: border-left, border-right, box-shadow;
+}
+
+.signup-form .user-input:hover, .form .user-input:focus, .form .user-input:active {
+    border-left: solid 8px #4285F4;
+    border-right: solid 8px #4285F4;
+    box-shadow: 0 0 100px rgba(66, 133, 244, 0.8);
+}
+
+.signup-form .option-02 {
+    color: #bbb;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.signup-form .option-02 .link {
+    color: #4285F4
+}
+
+.signup-form .btn {
+    outline: none;
+    border: none;
+    width: 320px;
+    height: 55px;
+    background: #4285F4;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+    transition-property: border-left, border-right, box-shadow;
+}
+
+.signup-form .btn:hover{
+    border-left: solid, 8px, rgba(255, 255, 255, 0.5);
+    border-right: solid, 8px, rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 100px rgba(66, 133, 244, 0.8);
+}
+
+@media screen and (max-width: 500px) {
+    .signup-form {
+        width: 95%;
+    }
+
+    .signup-form .user-input {
+        width: 100%;
+    }
+
+    .signup-form .btn {
+        width: 100%;
+    }
+}
