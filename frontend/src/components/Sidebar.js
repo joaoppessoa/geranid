@@ -1,48 +1,70 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import imgprof from '../assets/imagem.png';
 import '../css/cssComponets/styleSidebar.css';
+import api from '../services/api';
 
-class Sidebar extends React.Component {
-    constructor(props) {
-        super(props);
+function Sidebar() {
+    const [titulo, setTitulo] = useState('');
+    const [workspaces, setWorkspaces] = useState([]);
+    const nome_session = localStorage.getItem('nome_session');
+    const id_session = localStorage.getItem('id_session');
+
+    useEffect(() => {
+        api.get('workspaces', {
+            headers: {
+                Authorization: id_session
+            }
+        }).then(response => {
+            setWorkspaces(response.data);
+        });
+    }, [id_session]);
+
+    async function handlerEdit(e) {
+        e.preventDefault();
+
+        const data = {
+            titulo
+        }
+        //console.log(data);
+        
+        
+        try {
+            await api.put('workspaces', data, {
+                headers: {Authorization: id_session}
+            });
+
+        } catch(err) {
+            console.log(err);
+        }
     }
 
-    render() {
-        return (
-            <div className="sidebar">
-                <div className="sidebar-menu">
-                    <center class="profile">
-                        <img src={imgprof} alt="" />
-                        <p>João Paulo</p>
-                    </center>
-                    <li className="item">
+
+    return (
+        <div className="sidebar">
+            <div className="sidebar-menu">
+                <center className="profile">
+                    <img src={imgprof} alt="" />
+                    <p>{nome_session}</p>
+                </center>
+                {workspaces.map(workspace => (
+                    <li key={workspace.id} className="item">
                         <a href="#" className="menu-btn">
                             <i className="fas fa-th-list"></i>
-                            <span>Workspace</span>
+                            <span>
+                                <input 
+                                    type="text" 
+                                    defaultValue={workspace.titulo} 
+                                    onChange={e => setTitulo(e.target.value)}
+                                    onBlur={handlerEdit}
+                                />
+                            </span>
                         </a>
                     </li>
-                    <li className="item">
-                        <a href="#" className="menu-btn">
-                            <i className="fas fa-th-list"></i>
-                            <span>Workspace</span>
-                        </a>
-                    </li>
-                    <li className="item">
-                        <a href="#" className="menu-btn">
-                            <i className="fas fa-th-list"></i>
-                            <span>Workspace</span>
-                        </a>
-                    </li>
-                    <li className="item">
-                        <a href="#" className="menu-btn">
-                            <i className="fas fa-th-list"></i>
-                            <span>Workspace</span>
-                        </a>
-                    </li>
-                </div>
+                ))}
+                
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default Sidebar;

@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import '../css/cssComponets/styleHeader.css';
+import { Link, useHistory } from 'react-router-dom';
 
-import '../css/cssComponets/styleHeader.css'
+function Header () {
+    const history = useHistory();
+    
+    function logOut() {
+        localStorage.clear()
 
-class Header extends React.Component {
-    constructor(props) {
-        super(props);
+        history.push('/'); 
     }
 
-    render() {
-        return(
-            <div className="header">
-                <div className="header-menu">
-                    <div className="title">Ger<span>ANID</span></div>
-                    <ul>
-                        <li><a href="#"><i className="fas fa-search"></i></a></li>
-                        <li><a href="#"><i className="fas fa-power-off"></i></a></li>
-                    </ul>
-                </div>
+    return(
+        <div className="header">
+            <div className="header-menu">
+                <div className="title">Ger<span>ANID</span></div>
+                <ul>
+                    <li><Link to="#"><i className="fas fa-search"></i></Link></li>
+                    <li><Link to="#" onClick={logOut}><i className="fas fa-power-off"></i></Link></li>
+                </ul>
             </div>
-        );
-    }
+        </div>
+    );
+    
 }
 
 export default Header;

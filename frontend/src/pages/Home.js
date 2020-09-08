@@ -13,7 +13,7 @@ class Home extends React.Component {
                 <Header />
                 <Sidebar />
             </div>
-        )
+        );
     }
 }
 

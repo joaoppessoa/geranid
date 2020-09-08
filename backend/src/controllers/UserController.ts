@@ -1,4 +1,4 @@
-import { Request, Response, json } from 'express';
+import { Request, Response } from 'express';
 import bcryptjs from 'bcryptjs';
 import connection from '../database/connection';
 
@@ -53,6 +53,7 @@ class UserController {
             }
 
             const session = {  
+                id: dados.id,
                 nome: dados.nome,
                 email: dados.email,
                 status: dados.deletado 
@@ -66,11 +67,10 @@ class UserController {
     }
 
     async edit (request: Request, response: Response) {
-        //const id_session = request.headers.authorization;
+            const id_session = request.headers.authorization;
 
-        const { id_session, nome, email } = request.body;
-        console.log(request.body);
-
+        const { nome, email } = request.body;
+    
         try {
 
             const usuario = { 
