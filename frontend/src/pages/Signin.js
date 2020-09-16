@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import '../css/styleSignin.css';
+import '../css/styleSign.css';
 import api from '../services/api';
 
 
@@ -8,6 +8,8 @@ function Signin () {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [focusEmail, setFocusEmail] = useState('');
+    const [focusPass, setFocusPass] = useState('');
 
     const history = useHistory();
 
@@ -26,10 +28,10 @@ function Signin () {
             localStorage.setItem('nome_session', response.data.nome);
             localStorage.setItem('email_session', response.data.email);
 
-            history.push('/home');
-
             setEmail('');
             setPassword('');
+
+            history.push('/home');
         } catch (err) {
             alert('Falha no login, tente novamente.');
             setEmail('');
@@ -39,42 +41,39 @@ function Signin () {
     
     return(
         <div className="body-log">
-            <div className="form">
-                <form className="login-form" onSubmit={handleSubmit}>
+            <form className='login-form' onSubmit={handleSubmit}>
+                <h1>Log in</h1>
 
-                    <div className="title">Ger<span>ANID</span></div>
-
-                    <i className="fas fa-user-circle"></i>
+                <div className='txtb'> 
                     <input 
-                        className="user-input" 
-                        type="text" 
+                        type='text' 
                         value={email}
+                        className={focusEmail} 
+                        onFocus={e => setFocusEmail('focus')} 
                         onChange={e => setEmail(e.target.value)}
-                        placeholder="E-mail" 
-                        required 
                     />
+                    <span data-placeholder='Email'></span>
+                </div>
+
+                <div className='txtb'> 
                     <input 
-                        className="user-input" 
-                        type="password" 
+                        type='password'
                         value={password}
+                        className={focusPass}
+                        onFocus={e => setFocusPass('focus')}
                         onChange={e => setPassword(e.target.value)}
-                        placeholder="Senha" 
-                        required 
                     />
-            
-                    <div className="option-01">
-                        <Link className="link" to="#">Esqueceu sua senha?</Link>
-                    </div>
+                    <span data-placeholder='Password'></span>
+                </div>
 
-                    <input className="btn" type="submit" value="LOGIN" />
+                <input type='submit' className='logbtn' value='Login' />
+                
+                <div className='bottom-text' >
+                    Não tem uma conta? <Link to='/sign-up'>Sign up</Link>
+                </div>
 
-                    <div className="option-02">
-                        <p>Não tem registro? <Link to="/sign-up">Criar uma conta</Link></p>
-                    </div>
-                </form>
-            </div>
+            </form>
         </div>
-        
     );
 }
 

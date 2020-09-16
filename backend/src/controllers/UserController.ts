@@ -33,11 +33,15 @@ class UserController {
         }
     }
 
-    async index (request: Request, response: Response) {
-        const user = await connection('usuarios').select(['id', 'nome', 'email']);
+    /*async index (request: Request, response: Response) {
+        const id_session = request.headers.authorization;
+
+        const user = await connection('usuarios')
+        .where('id', id_session)
+        .select(['id', 'nome']);
 
         return response.json(user)
-    }
+    }*/
 
     async login (request: Request, response: Response) {
         const { email, password } = request.body;
@@ -67,18 +71,17 @@ class UserController {
     }
 
     async edit (request: Request, response: Response) {
-            const id_session = request.headers.authorization;
+        const id_session = request.headers.authorization;
 
         const { nome, email } = request.body;
-    
-        try {
 
-            const usuario = { 
+        try {
+            const user = {
                 nome,
                 email
             };
 
-            await connection('usuarios').where('id', id_session).update(usuario);
+            await connection('usuarios').where('id', id_session).update(user);
 
             return response.status(204).send();
             

@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import Container from '../components/Container';
 
 class Home extends React.Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class Home extends React.Component {
             <div className="wrapper">
                 <Header />
                 <Sidebar />
+                <Container />
             </div>
         );
     }

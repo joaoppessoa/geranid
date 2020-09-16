@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import imgprof from '../assets/imagem.png';
+import { Link } from 'react-router-dom';
 import '../css/cssComponets/styleSidebar.css';
 import api from '../services/api';
 
 function Sidebar() {
     const [titulo, setTitulo] = useState('');
     const [workspaces, setWorkspaces] = useState([]);
-    const nome_session = localStorage.getItem('nome_session');
     const id_session = localStorage.getItem('id_session');
 
     useEffect(() => {
@@ -43,25 +42,41 @@ function Sidebar() {
         <div className="sidebar">
             <div className="sidebar-menu">
                 <center className="profile">
-                    <img src={imgprof} alt="" />
-                    <p>{nome_session}</p>
+                    <p>
+                        Áreas de Trabalho 
+                    </p>
+
                 </center>
                 {workspaces.map(workspace => (
-                    <li key={workspace.id} className="item">
-                        <a href="#" className="menu-btn">
+                    <li key={workspace.id} className="item" id={workspace.id}>
+                        <a href={"#"+workspace.id} className="menu-btn">
                             <i className="fas fa-th-list"></i>
                             <span>
-                                <input 
-                                    type="text" 
-                                    defaultValue={workspace.titulo} 
-                                    onChange={e => setTitulo(e.target.value)}
-                                    onBlur={handlerEdit}
-                                />
+                                {workspace.titulo} 
+                                <i className="fas fa-chevron-down drop-down"></i>
                             </span>
                         </a>
+                        <div className="sub-menu">
+                            <Link to="#">
+                                <i class="fas fa-clipboard-list"></i>
+                                <span>board</span>
+                            </Link>
+                        </div>
                     </li>
                 ))}
-                
+                <li  className="item">
+                    <a className="menu-btn" id='mudar'>
+                    <i class="far fa-plus-square"></i>
+                        <span>
+                            <input 
+                                type="text" 
+                                placeholder="Adicionar Aréa de trabalho"
+                                id="input-cad"
+                            />
+                        </span>
+                    </a>
+                        
+                </li>
             </div>
         </div>
     );

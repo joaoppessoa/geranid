@@ -1,0 +1,47 @@
+.container {
+    width: (100% - 250px);
+    margin-top: 78px;
+    margin-left: 250px;
+    padding: 15px;
+    background-size: cover;
+    height: 100vh;
+}
+
+.container ul span {
+    color: #4CCEE8;
+    font-size: 25px;
+    padding-left: 40px;
+}
+
+.container ul a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65%;
+    font-size: 20px;
+    color: white;
+    padding-left: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    border-bottom: 1px solid black;
+    transition: .4s;
+}
+
+.container ul a i {
+    margin-right: 16px;
+}
+
+.container ul a input {
+    width: 300px;
+    height: 20px;
+    outline: none;
+    border: none;
+    background: rgba(255, 255, 255, 0);
+    color: #fff;
+    text-align: left;
+    font-size: 18px;
+    border-radius: 5px;
+    padding-left: 8px;
+}

@@ -1,9 +1,9 @@
 .header {
     z-index: 1;
-    background: #22242A;
+    background: linear-gradient(120deg, #3498db, #8e44ad);;
     position: fixed;
     width: calc(100% - 0%);
-    height: 70px;
+    height: 50px;
     display: flex;
     top: 0;
 }
@@ -17,9 +17,27 @@
     padding: 0 20px;
 }
 
+.user i{
+    background: #fff;
+    color: #000;
+    margin: 0 10px;
+    font-size: 20px;
+    width: 34px;
+    height: 34px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.user {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 700
+}
+
 .header .header-menu .title {
     color: #fff;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: 900;
 
 }
@@ -30,6 +48,7 @@
 
 .header .header-menu ul {
     display: flex;
+    list-style: none;
 }
 
 .header .header-menu ul li a { 

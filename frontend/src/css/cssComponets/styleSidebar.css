@@ -1,12 +1,10 @@
 .sidebar {
     z-index: 1;
-    background: #2F323A;
+    background: #e0dfdf;
     position: fixed;
-    top: 70px;
+    top: 50px;
     width: 250px;
-    height: calc(100% - 9%);
-    transition: 0.3s;
-    transition-property: width;
+    height: 100%;
     overflow-y: auto; 
 }
 
@@ -14,33 +12,113 @@
     overflow: hidden;
 }
 
-.sidebar .sidebar-menu .profile img {
-    margin: 20px 0;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
-
 .sidebar .sidebar-menu .profile p {
-    color: #bbb;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 20px;
+    color: #054f77;
     font-weight: 700;
     margin-bottom: 10px;
+    list-style: none;
+    border-bottom: 2px solid #fff;
 }
 
 .sidebar .sidebar-menu .item {
     width: 250px;
     overflow: hidden;
+    list-style: none;
 }
 
 .sidebar .sidebar-menu .item .menu-btn {
     display: block;
-    color: #fff;
+    color: #000;
     position: relative;
     padding: 25px 20px;
     transition: 0.3s;
     transition-property: color;
 }
 
+.sidebar .sidebar-menu .item #mudar{
+    color: #868686;
+}
+
+.sidebar .sidebar-menu .item #mudar #input-cad {
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    width: 80%;
+    outline: none;
+    background: none;
+}
+
 .sidebar .sidebar-menu .item .menu-btn:hover {
     color: #4CCEE8;
 }
+
+.sidebar .sidebar-menu .item .menu-btn i{
+    margin-right: 20px;
+}
+
+.sidebar .sidebar-menu .item .menu-btn .drop-down {
+    float: right;
+    font-size: 12px;
+    margin-top: 3px;
+
+}
+
+.sidebar .sidebar-menu .item .sub-menu {
+    background: #fff;
+    overflow: hidden;
+    max-height: 0;
+    transition: 0.3s;
+    transition-property: background, max-height;  
+}
+
+.sidebar .sidebar-menu .item .sub-menu a {
+    display: block;
+    position: relative;
+    color: #000;
+    white-space: nowrap;
+    font-size: 15px;
+    padding: 20px;
+    border-bottom: 1px solid #d3d3d3;
+    transition: 0.3s;
+    transition-property: background;
+}
+
+
+
+.sidebar .sidebar-menu .item .sub-menu i {
+    padding-right: 20px;
+    font-size: 10px;
+}
+
+.sidebar .sidebar-menu .item:target .sub-menu {
+    max-height: 500px;
+}
+
+.sidebar .sidebar-menu .add-ws {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    height: 20px;
+    font-size: 20px;
+    color: #054f77;
+    font-weight: 700;
+    margin-bottom: 10px;
+    list-style: none;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+
+/*.sidebar .sidebar-menu .item .menu-btn .span-input{
+    width: 180px;
+    height: 20px;
+    outline: none;
+    border: none;
+    background: rgba(255, 255, 255, 0);
+    color: #000;
+    text-align: left;
+    font-size: 18px;
+    border-radius: 5px;
+    padding-left: 8px;
+}*/
