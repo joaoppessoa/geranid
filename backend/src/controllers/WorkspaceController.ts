@@ -26,7 +26,11 @@ class WorkspaceController {
 
            await trx.commit();
 
-            return response.status(204).send();
+            return response.json({ 
+                id: workspace_id,
+                titulo
+            });
+
         } catch(err) {
             return response.status(400).json({ error: 'Houve algum erro no servidor.' });
         }

@@ -16,7 +16,7 @@ function Header () {
         <div className="header">
             <div className="header-menu">
                 <div className='user'>
-                <i class="far fa-user"></i>
+                <i className="far fa-user"></i>
                     {nome_session}
                 </div>
                 <div className="title">GEREN<span>CIADOR</span></div>
