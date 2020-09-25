@@ -29,7 +29,11 @@ class BoardController {
 
             await trx.commit();
 
-            return response.status(204).send();
+            return response.json({
+                id: board_id,
+                titulo,
+                descricao,
+            });
 
         } catch(err) {
             return response.status(400).json({ error: 'Houve algum erro no servidor.' });
@@ -83,7 +87,11 @@ class BoardController {
 
             await trx.commit();
 
-            return response.status(204).send('Sucesso');
+            return response.json({
+                id: verify.board,
+                titulo,
+                descricao
+            });
         } catch(err) {
             return response.status(400).json({ error: 'Houve algum erro no servidor.' });
         }

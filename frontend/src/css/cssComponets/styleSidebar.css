@@ -3,7 +3,7 @@
     background: #e0dfdf;
     position: fixed;
     top: 50px;
-    width: 300px;
+    width: 15%;
     height: 100%;
     overflow-y: auto; 
 }
@@ -29,6 +29,16 @@
     list-style: none;
 }
 
+.sidebar .sidebar-menu .item  .btn-link{
+    color: #000;
+}
+
+
+.sidebar .sidebar-menu .item button {
+    margin-left: 25px;
+    font-size: 15px;
+}
+
 .sidebar .sidebar-menu .item .menu-btn {
     display: block;
     color: #000;
@@ -50,6 +60,7 @@
     outline: none;
     background: none;
 }
+
 
 .sidebar .sidebar-menu .item .menu-btn:hover {
     color: #4CCEE8;
@@ -74,23 +85,39 @@
     transition-property: background, max-height;  
 }
 
+.sidebar .sidebar-menu .item .sub-menu button{
+    font-size: 10px;
+    height: 25px;
+    margin-left: 40px;
+}
+
+.sidebar .sidebar-menu .item .sub-menu .sub-item {
+    border-bottom: 1px solid #f3efef;
+    padding-top: 10px;
+}
+
 .sidebar .sidebar-menu .item .sub-menu a {
-    display: block;
+    
     position: relative;
     color: #000;
     white-space: nowrap;
     font-size: 15px;
     padding: 20px;
-    border-bottom: 1px solid #d3d3d3;
     transition: 0.3s;
     transition-property: background;
 }
 
 
 
+
 .sidebar .sidebar-menu .item .sub-menu i {
     padding-right: 20px;
+    padding-left: 10px;
     font-size: 10px;
+}
+
+.sidebar .sidebar-menu .item .sub-menu .board-edit {
+    border: none;
 }
 
 .sidebar .sidebar-menu .item:target .sub-menu {

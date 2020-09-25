@@ -5,7 +5,8 @@ export async function up(knex: Knex) {
         table.increments('id').primary();
         table.string('titulo').notNullable();
         table.integer('status')
-        table.date('data').notNullable();
+        table.integer('prioridade')
+        table.date('data');
         table.integer('group')
         .notNullable()
         .unsigned()

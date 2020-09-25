@@ -17,7 +17,7 @@ class GroupController {
 
             await connection('groups').insert(group);
 
-            return response.status(204).send();
+            return response.json({...group});
         } catch(err) {
             console.log(err);
             return response.status(400).json({ error: 'Houve algum erro no servidor.' });

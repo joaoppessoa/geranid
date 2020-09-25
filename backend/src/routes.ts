@@ -4,6 +4,7 @@ import UserController from './controllers/UserController';
 import WorkspaceController from './controllers/WorkspaceController';
 import BoardController from './controllers/BoardController';
 import GroupController from './controllers/GroupController';
+import TaskController from './controllers/TaskController';
 
 const routes = express.Router();
 
@@ -11,6 +12,7 @@ const userController = new UserController();
 const workspaceController = new WorkspaceController();
 const boardController = new BoardController();
 const groupController = new GroupController();
+const taskController = new TaskController();
 
 routes.post('/session', userController.login);
 
@@ -49,5 +51,10 @@ routes.get('/groups/:board_id', groupController.index);
 routes.put('/groups/:group_id', groupController.update);
 
 routes.delete('/groups/:group_id', groupController.delete);
+
+
+routes.post('/tasks/:group_id', taskController.create);
+routes.get('/tasks/:group_id', taskController.index);
+routes.put('/tasks/title/:group_id', taskController.updateTitle);
 
 export default routes;

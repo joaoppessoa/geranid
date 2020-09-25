@@ -32,18 +32,21 @@
 .user {
     font-size: 20px;
     color: #fff;
-    font-weight: 700
+    font-weight: 700;
+    font-family: sans-serif;
 }
 
 .header .header-menu .title {
     color: #fff;
     font-size: 30px;
     font-weight: 900;
+    font-family: sans-serif;
 
 }
 
 .header .header-menu .title span { 
     color: #4CCEE8;
+    font-family: sans-serif;
 }
 
 .header .header-menu ul {
@@ -55,7 +58,7 @@
     background: #fff;
     color: #000;
     display: block;
-    margin: 0 10px;
+    margin: 0 10px -15px;
     font-size: 18px;
     width: 34px;
     height: 34px;

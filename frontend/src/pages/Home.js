@@ -1,22 +1,17 @@
 import React from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import Container from '../components/Container';
+import Conteiner from '../components/Conteiner';
 
-class Home extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className="wrapper">
-                <Header />
-                <Sidebar />
-                <Container />
-            </div>
-        );
-    }
+function Home() {
+    
+    return (
+        <div className="wrapper">
+            <Header />
+            <Sidebar />
+            <Conteiner />
+        </div>
+    );
 }
 
 export default Home;
