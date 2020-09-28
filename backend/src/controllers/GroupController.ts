@@ -5,12 +5,12 @@ class GroupController {
     async create(request: Request, response: Response) {
         const { board_id } = request.params;
 
-        const { titulo, cor } = request.body;
+        const { titulo } = request.body;
 
         try {
             const group = {
                 titulo,
-                cor,
+                cor: '',
                 board: board_id,
                 deletado: 0
             }

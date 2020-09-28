@@ -57,7 +57,7 @@ class WorkspaceController {
 
         const {workspace_id} = request.params;
 
-        const {titulo} = request.body;
+        const { titulo } = request.body;
 
         const trx = await connection.transaction();
 

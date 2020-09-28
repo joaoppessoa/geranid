@@ -1,0 +1,26 @@
+#card-log{
+    width: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 1px 5px 30px rgb(195, 195, 195);
+}
+
+#card-log #title-card{
+    padding-left: 115px;
+    margin-bottom: 50px;
+    font-size: 30px;
+}
+
+#card-footer{
+    margin-top: 40px;
+    text-align: center;
+    font-size: 13px;
+}
+
+#fundo{
+    min-height: 100vh;
+    background: rgba(4, 131, 216, 0.527)
+}
+

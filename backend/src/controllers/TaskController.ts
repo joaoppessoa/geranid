@@ -63,13 +63,14 @@ class TaskController {
         const { titulo } = request.body;
 
         try { 
-            await connection('tsks')
+            await connection('tasks')
                 .where('id', task_id)
                 .update('titulo', titulo);
 
             return response.status(204).send();
             
         } catch(err) {
+            console.log(err)
             return response.status(400).json({ error: 'Não foi possivel realizar seu cadastro.'});
         }
     }

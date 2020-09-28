@@ -8,14 +8,14 @@ class BoardController {
 
         const { workspace_id } = request.params;
 
-        const { titulo, descricao } = request.body;
+        const { titulo } = request.body;
 
         const trx = await connection.transaction();
 
         try {
             const board = {
                 titulo,
-                descricao,
+                descricao: '',
                 workspace: workspace_id,
                 deletado: 0
             };
@@ -32,7 +32,7 @@ class BoardController {
             return response.json({
                 id: board_id,
                 titulo,
-                descricao,
+                descricao: '',
             });
 
         } catch(err) {

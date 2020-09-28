@@ -1,0 +1,12 @@
+#title-main{
+    margin: 35px 0 25px;
+    border-bottom: 1px solid rgb(212, 212, 212);;
+}
+
+#title-main h3 {
+    padding-bottom: 15px;
+}
+
+#title-main h3 span {
+    font-weight: 700;
+}
