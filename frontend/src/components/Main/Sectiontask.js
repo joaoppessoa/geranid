@@ -3,17 +3,24 @@ import { Table, FormControl, Button, Modal} from 'react-bootstrap';
 import * as Yup from 'yup';
 import { Form } from '@unform/web';
 import  Input from '../Form/Input';
-import Prioridade from '../Form/Prioridade';
 import api from '../../services/api';
 
 export default function Sectiontask({ group }) {
+
     const [tasks, setTasks] = useState([]);
 
     const [smShowTask, setSmShowTask] = useState(false);
 
     const formRef = useRef(null);
     const formTitleRef = useRef(null);
-    const formPrioridadeRef = useRef(null);
+    const formDataRef = useRef(null);
+
+
+    /** ************************************************************************************************ */
+    const [idTask, setIdTask] = useState('');
+    const [prioridade, setPrioridade] = useState('');
+    const [status, setStatus] = useState('');
+    /** ************************************************************************************************ */
 
     useEffect(() => {
         api.get(`tasks/${group}`).then(response => {
@@ -21,7 +28,18 @@ export default function Sectiontask({ group }) {
         });
     }, [group]);
 
-    async function hundleSubmit(data, { reset }){
+    function setDadosPrioridade(idTask, prioridade) {
+        setIdTask(idTask);
+        setPrioridade(prioridade);
+    }
+
+    function setDadosStatus(idTask, status){
+        setIdTask(idTask);
+        setStatus(status);
+    }
+
+
+    async function hundleSubmit(data, { reset }) {
         try{
             const schema = Yup.object().shape({
                 titulo: Yup.string().required('Digite um titulo para a Tarefa.')
@@ -67,6 +85,60 @@ export default function Sectiontask({ group }) {
         }
     }
 
+    async function hundleEditPrioridade(e) {
+        e.preventDefault();
+
+        const data = {
+            id: idTask,
+            prioridade
+        }
+
+        console.log(data);
+
+        try {
+            await api.put('tasks/prioridade', data);
+
+            await api.get(`tasks/${group}`).then(response => {
+                setTasks(response.data);
+            });
+
+        } catch(err) {
+            console.log(err);
+        }
+    }
+
+    async function hundleEditStatus(e) {
+        e.preventDefault();
+
+        const data = {
+            id: idTask,
+            status
+        }
+
+        try {
+            await api.put('tasks/status', data);
+
+            await api.get(`tasks/${group}`).then(response => {
+                setTasks(response.data);
+            });
+
+        } catch(err) {
+            console.log(err);
+        }
+    }
+
+    async function hundleEditData(data) {
+        try{
+            await api.put('/tasks/data', data);
+
+            await api.get(`tasks/${group}`).then(response => {
+                setTasks(response.data);
+            });
+        } catch(err){
+            alert('Erro, tente novamente.');
+        }
+    }
+
     return(
         <div>
             <Button variant="primary" onClick={() => setSmShowTask(true)}><i className="fas fa-plus-circle"></i> Nova Tarefa</Button>
@@ -95,25 +167,52 @@ export default function Sectiontask({ group }) {
                         </td>
                         <td>João Paulo dos Santos</td>
                         <td>
-                            <Form initialData={task}>
-                                <Prioridade name="prioridade" ></Prioridade>
-                            </Form>
+                            <form onSubmit={hundleEditPrioridade}>
+                                <label></label>
+                                <FormControl
+                                    as="select"
+                                    className="mr-sm-2"
+                                    defaultValue={task.prioridade}
+                                    onChange={e => setDadosPrioridade(task.id, e.target.value)}
+                                    custom
+                                >
+                                    <option value="0">Choose...</option>
+                                    <option value="1" >Baixa</option>
+                                    <option value="2" >Média</option>
+                                    <option value="3" >Alta</option>
+                                </FormControl>
+                                <Button variant="link" type="submit"><i className="fas fa-angle-double-right"></i></Button>
+                            </form>
                         </td>
                         <td>
-                            <FormControl
-                                as="select"
-                                className="mr-sm-2"
-                                id="inlineFormCustomSelect"
-                                custom
-                            >
-                                <option value="0">Choose...</option>
-                                <option value="2" selected={task.status === 2 ? 'selected': ''}>Parado</option>
-                                <option value="3" selected={task.status === 3 ? 'selected': ''}>Em Andamento</option>
-                                <option value="4" selected={task.status === 4 ? 'selected': ''}>Aguardando revisão</option>
-                                <option value="1" selected={task.status === 1 ? 'selected': ''}>Feito</option>
-                            </FormControl>
+                            <form onSubmit={hundleEditStatus}>
+                                <label></label>
+                                <FormControl
+                                    as="select"
+                                    className="mr-sm-2"
+                                    defaultValue={task.status}
+                                    onChange={e => setDadosStatus(task.id, e.target.value)}
+                                    custom
+                                >
+                                    <option value="0">Choose...</option>
+                                    <option value="2" >Parado</option>
+                                    <option value="3" >Em Andamento</option>
+                                    <option value="4" >Aguardando revisão</option>
+                                    <option value="1" >Feito</option>
+                                </FormControl>
+                                
+                                <Button variant="link" type="submit"><i className="fas fa-angle-double-right"></i></Button>
+                            </form>
+                            
                         </td>
-                        <td><FormControl type="date" value={task.data} /></td>
+                        <td>
+                            <Form initialData={task} ref={formDataRef} onSubmit={hundleEditData}>
+                                <Input label="" type="date" name="data" />
+                                <Button variant="link" type="submit"><i className="fas fa-angle-double-right"></i></Button>
+                                <Input label="" type="hidden" name="id" />
+                                
+                            </Form>
+                        </td>
                         <td></td>
                         <td></td>
                         </tr>

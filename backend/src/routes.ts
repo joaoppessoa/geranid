@@ -58,5 +58,8 @@ routes.delete('/groups/:group_id', groupController.delete);
 routes.post('/tasks/:group_id', taskController.create);
 routes.get('/tasks/:group_id', taskController.index);
 routes.put('/tasks/title/:task_id', taskController.updateTitle);
+routes.put('/tasks/prioridade', taskController.updatePrioridade);
+routes.put('/tasks/status', taskController.updateStatus);
+routes.put('/tasks/data', taskController.updateData);
 
 export default routes;

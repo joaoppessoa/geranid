@@ -33,7 +33,7 @@ class TaskController {
             const tasks = await connection('tasks AS t')
                 .where('t.group', group_id)
                 .andWhere('t.deletado', 0)
-                .orderBy(['t.data', {column: 't.prioridade', order: 'desc'}, {column: 't.status'}])
+                .orderBy(['t.data', {column: 't.prioridade', order: 'desc'}, {column: 't.status', order: 'asc'}])
                 .select('*');
 
             return response.json(tasks);
@@ -71,7 +71,52 @@ class TaskController {
             
         } catch(err) {
             console.log(err)
-            return response.status(400).json({ error: 'Não foi possivel realizar seu cadastro.'});
+            return response.status(400).json({ error: 'Erro'});
+        }
+    }
+
+    async updatePrioridade(request: Request, response: Response) {
+        const { prioridade, id } = request.body;
+
+        try { 
+            await connection('tasks')
+                .where('id', id)
+                .update('prioridade', prioridade);
+
+            return response.status(204).send();
+        } catch(err) {
+            console.log(err)
+            return response.status(400).json({ error: 'Erro'});
+        }
+    }
+
+    async updateStatus(request: Request, response: Response) {
+        const { status, id } = request.body;
+
+        try { 
+            await connection('tasks')
+                .where('id', id)
+                .update('status', status);
+
+            return response.status(204).send();
+        } catch(err) {
+            console.log(err)
+            return response.status(400).json({ error: 'Erro'});
+        }
+    }
+
+    async updateData(request: Request, response: Response) {
+        const { data, id } = request.body;
+
+        try { 
+            await connection('tasks')
+                .where('id', id)
+                .update('data', data);
+
+            return response.status(204).send();
+        } catch(err) {
+            console.log(err)
+            return response.status(400).json({ error: 'Erro'});
         }
     }
 }
