@@ -33,15 +33,22 @@ class UserController {
         }
     }
 
-    /*async index (request: Request, response: Response) {
-        const id_session = request.headers.authorization;
+    async index (request: Request, response: Response) {
 
-        const user = await connection('usuarios')
-        .where('id', id_session)
+        const users = await connection('usuarios')
         .select(['id', 'nome']);
 
-        return response.json(user)
-    }*/
+        const Users: Array<object> = [];
+        users.map(user => {
+            
+            Users.push({
+                value: user.id,
+                label: user.nome
+            });
+        })
+
+        return response.json(Users)
+    }
 
     async login (request: Request, response: Response) {
         const { email, password } = request.body;

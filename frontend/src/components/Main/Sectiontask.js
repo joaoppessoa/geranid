@@ -3,6 +3,7 @@ import { Table, FormControl, Button, Modal} from 'react-bootstrap';
 import * as Yup from 'yup';
 import { Form } from '@unform/web';
 import  Input from '../Form/Input';
+import SlectUsers from '../Form/SlectUsers';
 import api from '../../services/api';
 
 export default function Sectiontask({ group }) {
@@ -165,7 +166,7 @@ export default function Sectiontask({ group }) {
                                 <Input label="" type="hidden" name="id" />
                             </Form>
                         </td>
-                        <td>João Paulo dos Santos</td>
+                        <td> <SlectUsers /></td>
                         <td>
                             <form onSubmit={hundleEditPrioridade}>
                                 <label></label>
